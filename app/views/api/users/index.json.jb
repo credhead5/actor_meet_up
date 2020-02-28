@@ -1,0 +1,5 @@
+@users.map do |user|
+  json = render partial: "user.json.jb", locals: { user: user }
+  json[:user] = user.username
+  json
+end
