@@ -1,0 +1,1 @@
+review = render partial: "review.json.jb", locals: { review: @review }

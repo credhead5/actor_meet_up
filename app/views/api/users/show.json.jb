@@ -1,1 +1,3 @@
 user = render partial: "user.json.jb", locals: { user: @user }
+user[:reviews] = @user.evaluator_reviews
+user

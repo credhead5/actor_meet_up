@@ -1,6 +1,9 @@
 class Api::MeetingsController < ApplicationController
+
+  before_action :authenticate_user
+
   def index
-    @meetings = Meeting.all
+    @meetings = current_user.meetings
     render "index.json.jb"
   end
 
@@ -11,7 +14,7 @@ class Api::MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.new(
-      seeker_id: params[:seeker_id],
+      seeker_id: current_user.id, 
       fulfiller_id: params[:fulfiller_id],
       location: params[:location],
       start_time: params[:start_time],
@@ -44,8 +47,8 @@ class Api::MeetingsController < ApplicationController
 
   def destroy
     @meeting = Meeting.find(params[:id])
-    @user.destroy
-    render json: {message: "User successfully destroyed"}
+    @meeting.destroy
+    render json: {message: "Meeting successfully destroyed"}
     
   end
 

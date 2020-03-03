@@ -1,0 +1,6 @@
+{
+  id: review.id,
+  evaluator_id: review.evaluator_id,
+  actor_id: review.actor_id,
+  text: review.text,
+}

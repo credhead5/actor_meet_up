@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+
+  has_secure_password
+  validates :email, presence: true, uniqueness: true
+  
+  validates :username, uniqueness: true
+
   has_many :seeker_meetings, class_name: "Meeting", foreign_key: "fulfiller_id"
 
   has_many :seekers, through: :seeker_meetings, source: :seeker
@@ -14,6 +20,11 @@ class User < ApplicationRecord
   has_many :actor_reviews, class_name: "Review", foreign_key: "evaluator_id"
   
   has_many :actors, through: :actor_reviews,source: :actor
+
+  def meetings
+    seeker_meetings + fulfiller_meetings
+  end
+
 end
 
 

@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  before_action :authenticate_user, except: [:index, :create]
+
   def index
     @users = User.all
     render "index.json.jb"
@@ -14,6 +16,8 @@ class Api::UsersController < ApplicationController
       username: params[:username],
       email: params[:email],
       bio: params[:bio],
+      password: params[:password],
+      password_confirmation: params[:password_confirmation]
       
     )
     if @user.save

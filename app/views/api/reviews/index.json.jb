@@ -1,0 +1,5 @@
+@reviews.map do |review|
+  json = render partial: "review.json.jb", locals: { review: review }
+  json[:review] = review.id
+  json
+end

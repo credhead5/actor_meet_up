@@ -1,0 +1,12 @@
+@meetings.map do |meeting|
+  json = render partial: "meeting.json.jb", locals: { meeting: meeting }
+  if meeting.seeker_id == current_user.id
+    json[:partner] = render partial: "api/users/user.json.jb", locals:{user: meeting.fulfiller}
+  else
+
+    json[:partner] = render partial: "api/users/user.json.jb", locals:{user: meeting.seeker}
+  end
+
+  
+  json
+end

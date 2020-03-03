@@ -22,7 +22,8 @@ Rails.application.routes.draw do
     patch "/reviews/:id" => "reviews#update"
     delete "/reviews/:id" => "reviews#destroy"
 
-
+    post "/users" => "users#create"
+    post "/sessions" => "sessions#create"
 
   end
 end
