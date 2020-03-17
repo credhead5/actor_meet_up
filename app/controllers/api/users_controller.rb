@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :authenticate_user, except: [:index, :create]
+  before_action :authenticate_user, except: [:index, :show, :create]
 
   def index
     @users = User.all
@@ -30,7 +30,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
 
     @user.username = params[:username] || @user.username
     @user.email = params[:email] || @user.email
