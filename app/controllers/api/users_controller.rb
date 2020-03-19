@@ -16,6 +16,7 @@ class Api::UsersController < ApplicationController
       username: params[:username],
       email: params[:email],
       bio: params[:bio],
+      image_url: params[:image_url],
       password: params[:password],
       password_confirmation: params[:password_confirmation]
       
@@ -35,6 +36,7 @@ class Api::UsersController < ApplicationController
     @user.username = params[:username] || @user.username
     @user.email = params[:email] || @user.email
     @user.bio = params[:bio] || @user.bio
+    @user.image_url = params[:image_url] || @user.image_url
 
     if @user.save
       # happy path
