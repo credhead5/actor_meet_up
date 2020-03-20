@@ -2,4 +2,9 @@ user = render partial: "user.json.jb", locals: { user: @user }
 user[:reviews] = @user.evaluator_reviews.map do |review|
   render partial: "api/reviews/review.json.jb", locals: {review: review}
 end
+
+user[:meetings] = @user.seeker_meetings.map do |meeting|
+  render partial: "api/meetings/meeting.json.jb",
+    locals: {meeting: meeting}
+end
 user
