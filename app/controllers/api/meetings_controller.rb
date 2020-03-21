@@ -16,7 +16,7 @@ class Api::MeetingsController < ApplicationController
     @meeting = Meeting.new(
       seeker_id: current_user.id, 
       fulfiller_id: params[:fulfiller_id],
-      location: params[:location],
+      address: params[:address],
       start_time: params[:start_time],
       end_time: params[:end_time]  
     )
@@ -32,7 +32,7 @@ class Api::MeetingsController < ApplicationController
   def update
     @meeting = Meeting.find(params[:id])
 
-    @meeting.location = params[:location] || @meeting.location
+    @meeting.address = params[:address] || @meeting.address
     @meeting.start_time = params[:start_time] || @meeting.start_time
     @meeting.end_time = params[:end_time] || @meeting.end_time
 

@@ -2,7 +2,7 @@
   id: meeting.id,
   seeker_id: meeting.seeker_id,
   fulfiller_id: meeting.fulfiller_id,
-  location: meeting.location,
+  address: meeting.address,
   start_time: meeting.start_time,
   end_time: meeting.end_time
 }
